@@ -32,6 +32,7 @@ class PieChart extends StatefulWidget {
     this.degreeOptions = const DegreeOptions(),
     this.baseChartColor = Colors.transparent,
     this.totalValue,
+    this.isRoundedEnd = false,
   }) : super(key: key);
 
   final Map<String, double> dataMap;
@@ -55,6 +56,7 @@ class PieChart extends StatefulWidget {
   final Map<String, String> legendLabels;
   final Color baseChartColor;
   final double? totalValue;
+  final bool isRoundedEnd;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -153,7 +155,8 @@ class _PieChartState extends State<PieChart>
                 initialAngle: widget.initialAngleInDegree,
               ),
               baseChartColor: widget.baseChartColor,
-              totalValue:widget.totalValue
+              totalValue:widget.totalValue,
+              isRoundedEnd: widget.isRoundedEnd,
             ),
             child: const AspectRatio(aspectRatio: 1),
           ),
