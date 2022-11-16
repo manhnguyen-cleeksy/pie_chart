@@ -29,6 +29,7 @@ class PieChartPainter extends CustomPainter {
   final DegreeOptions degreeOptions;
   final Color baseChartColor;
   final double? totalValue;
+  final bool isRoundedEnd;
 
   late double _prevAngle;
 
@@ -57,6 +58,7 @@ class PieChartPainter extends CustomPainter {
     this.degreeOptions = const DegreeOptions(),
     required this.baseChartColor,
     this.totalValue,
+    this.isRoundedEnd = false,
   }) {
     // set total value
     if (totalValue == null) {
@@ -68,7 +70,7 @@ class PieChartPainter extends CustomPainter {
     if (gradientList?.isEmpty ?? true) {
       for (int i = 0; i < values.length; i++) {
         final paint = Paint()..color = getColor(colorList, i);
-        paint.strokeCap = StrokeCap.round;
+        if(isRoundedEnd) paint.strokeCap = StrokeCap.round;
         setPaintProps(paint);
         _paintList.add(paint);
       }
